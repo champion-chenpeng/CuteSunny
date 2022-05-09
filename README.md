@@ -23,10 +23,10 @@ GW CPP QT Project
 			1) 类似course.pku.cn页面设计，子项为各学期各课程\
 			2) 课程类中嵌入所有课程实际可能用到的通知交流软件，比如微信、teams；如不能嵌入则提供跳转按钮。主要接受上下课通知、自动打开classin或teams\
 		ii. anti-covid-19\
-			1) 自动检测邮箱、信息、微信等中防疫新通知（政策变更），并显示，可回复；并安排日程（如核酸检测）\
+			1) 自动检测邮箱、信息、微信等中防疫新通知（政策变更），并显示，可回复；并安排日程（如核酸检测)（可以自己建一个日历）\
 			2) 输入就医、就业、科研等需求，自动在出入校中提交申请，甚至包括承诺书等内容\
 		iii. 其他\
-			1) 生活方面：\
+			1) 生活方面：小游戏等 \
 3. 开源
 	a. PVZ 5k https://github.com/sunziping2016/Qt-PlantsVsZombies\
 	b. 网易云 1k https://gitee.com/Morning_pkq/music-wwy/blob/master/MusicOfWYY/allmain.cpp![image](https://user-images.githubusercontent.com/65433575/167349891-4a0fb1e6-afc4-4ed4-8461-0b267c2485fb.png)\
