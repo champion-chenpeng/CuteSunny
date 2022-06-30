@@ -28,6 +28,13 @@
       </property>
       <item row="0" column="0">
        <widget class="QLabel" name="label">
+        <property name="styleSheet">
+         <string notr="true">QLabel
+{
+	background: rgb(234, 255, 84);
+	font: 13pt &quot;STKaiti&quot;;
+}</string>
+        </property>
         <property name="text">
          <string>Smtp-server:</string>
         </property>
@@ -35,6 +42,13 @@
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="label_2">
+        <property name="styleSheet">
+         <string notr="true">QLabel
+{
+	background: rgb(234, 255, 84);
+	font: 13pt &quot;STKaiti&quot;;
+}</string>
+        </property>
         <property name="text">
          <string>Server port:</string>
         </property>
@@ -42,6 +56,13 @@
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="label_3">
+        <property name="styleSheet">
+         <string notr="true">QLabel
+{
+	background: rgb(234, 255, 84);
+	font: 13pt &quot;STKaiti&quot;;
+}</string>
+        </property>
         <property name="text">
          <string>Username:</string>
         </property>
@@ -49,6 +70,13 @@
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="label_4">
+        <property name="styleSheet">
+         <string notr="true">QLabel
+{
+	background: rgb(234, 255, 84);
+	font: 13pt &quot;STKaiti&quot;;
+}</string>
+        </property>
         <property name="text">
          <string>Password:</string>
         </property>
@@ -56,6 +84,13 @@
       </item>
       <item row="4" column="0">
        <widget class="QLabel" name="label_5">
+        <property name="styleSheet">
+         <string notr="true">QLabel
+{
+	background: rgb(234, 255, 84);
+	font: 13pt &quot;STKaiti&quot;;
+}</string>
+        </property>
         <property name="text">
          <string>Recipant to:</string>
         </property>
@@ -63,6 +98,13 @@
       </item>
       <item row="5" column="0">
        <widget class="QLabel" name="label_6">
+        <property name="styleSheet">
+         <string notr="true">QLabel
+{
+	background: rgb(234, 255, 84);
+	font: 13pt &quot;STKaiti&quot;;
+}</string>
+        </property>
         <property name="text">
          <string>Subject:</string>
         </property>
@@ -70,6 +112,13 @@
       </item>
       <item row="6" column="0">
        <widget class="QLabel" name="label_7">
+        <property name="styleSheet">
+         <string notr="true">QLabel
+{
+	background: rgb(234, 255, 84);
+	font: 13pt &quot;STKaiti&quot;;
+}</string>
+        </property>
         <property name="text">
          <string>Message:</string>
         </property>
@@ -78,7 +127,7 @@
       <item row="0" column="1">
        <widget class="QLineEdit" name="server">
         <property name="text">
-         <string>smtp.gmail.com</string>
+         <string>smtp.pku.edu.cn</string>
         </property>
        </widget>
       </item>
@@ -152,7 +201,7 @@
      <x>0</x>
      <y>0</y>
      <width>484</width>
-     <height>26</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>

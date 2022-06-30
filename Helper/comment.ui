@@ -13,6 +13,12 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget
+{
+background: rgb(168, 255, 247);
+}</string>
+  </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -21,6 +27,13 @@
      <width>41</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel
+{
+	background: rgb(234, 255, 84);
+	font: 13pt &quot;STKaiti&quot;;
+}</string>
    </property>
    <property name="text">
     <string>洞号：</string>
