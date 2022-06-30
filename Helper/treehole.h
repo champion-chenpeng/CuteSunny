@@ -18,7 +18,6 @@ public:
     ~treehole();
 
 private slots:
-
     void on_pushButton_token_clicked();
 
     void on_pushButton_search_clicked();
@@ -33,7 +32,7 @@ private slots:
 
     void processGPA(QNetworkReply* reply);
 
-    void on_pushButton_clicked();
+    void on_pushButton_comment_clicked();
 
     void treehole_mail();
 

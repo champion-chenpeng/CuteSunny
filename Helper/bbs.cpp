@@ -37,7 +37,7 @@ bbs::~bbs()
     delete ui;
 }
 
-void bbs::on_pushButton_clicked()
+void bbs::on_pushButton_bbs_clicked()
 {
     QNetworkRequest request;
     QNetworkAccessManager * m_manager = new QNetworkAccessManager(this);
@@ -50,13 +50,13 @@ void bbs::on_pushButton_clicked()
 struct BBSPost {
     QString title, board, time;
     BBSPost() {}
-} hotTopics[105];
+} hotTopics[105];     // 100条热点的内容
 
 void bbs::processBBS(QNetworkReply* reply) {
     // 获取http状态码
     QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
     if(statusCode.isValid())
-        qDebug() << "status code=" << statusCode.toInt();
+        qDebug() << "processBBS, status code=" << statusCode.toInt();
 
     if(reply->error()==QNetworkReply::NoError) {
         QByteArray resBytes = reply->readAll();

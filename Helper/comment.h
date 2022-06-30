@@ -17,8 +17,7 @@ public:
     ~comment();
 
 private slots:
-
-    void on_pushButton_clicked();
+    void on_pushButton_comment_clicked();
 
     void processHole(QNetworkReply* reply);
 

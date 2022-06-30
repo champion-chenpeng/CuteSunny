@@ -19,6 +19,7 @@ public:
 
 private slots:
     void sendMail();
+
     void mailSent(QString);
     
 private:

@@ -43,6 +43,7 @@ campus::~campus()
     delete ui;
 }
 
+// 查询食堂用餐人数
 void campus::on_pushButton_canteen_clicked()
 {
     QNetworkRequest request;
@@ -51,9 +52,9 @@ void campus::on_pushButton_canteen_clicked()
     m_manager->get(request);   //向网页发起get请求
     connect(m_manager, SIGNAL(finished(QNetworkReply*)), this,SLOT(processCanteen(QNetworkReply*)));
     //请求完成,获取数据并在槽函数中进行处理
-
 }
 
+// 食堂
 struct Canteen {
     int ip, seat;
     QString name;
@@ -67,15 +68,13 @@ void campus::processCanteen(QNetworkReply* reply) {
     // 获取http状态码
     QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
     if(statusCode.isValid())
-        qDebug() << "status code=" << statusCode.toInt();
+        qDebug() << "processCanteen, status code=" << statusCode.toInt();
 
     if(reply->error()==QNetworkReply::NoError) {
         QByteArray resBytes = reply->readAll();
-
         QJsonDocument doc = QJsonDocument::fromJson(resBytes);
         QJsonObject json = doc.object();
-        qDebug() << "content=" << json;
-        qDebug() << "";
+
         if (json.contains("rows")) {
             QJsonValue value = json.value("rows");
             QJsonArray valueArray = value.toArray();
@@ -108,7 +107,8 @@ void campus::processCanteen(QNetworkReply* reply) {
     }
 }
 
-struct Gym {     // 运动场馆
+// 运动场馆
+struct Gym {
     int capacity, occupy, orderNum;
     QString areaName;
     Gym(int x, int y, int z, QString s): capacity(x), occupy(y), orderNum(z), areaName(s) {}
@@ -120,6 +120,7 @@ struct Gym {     // 运动场馆
 };
 std::vector<Gym> gymList[12];
 
+// 查询场馆占据情况
 void campus::on_pushButton_gym_clicked()
 {
     QNetworkRequest request;
@@ -151,21 +152,19 @@ void campus::processGym(QNetworkReply* reply) {
     // 获取http状态码
     QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
     if(statusCode.isValid())
-        qDebug() << "status code=" << statusCode.toInt();
+        qDebug() << "processGym, status code=" << statusCode.toInt();
 
     if(reply->error()==QNetworkReply::NoError) {
         QByteArray resBytes = reply->readAll();
-
         QJsonDocument doc = QJsonDocument::fromJson(resBytes);
         QJsonObject json = doc.object();
-        qDebug() << "content=" << json;
-        qDebug() << "";
 
         QJsonValue value = json.value("gyms");
         QJsonArray valueArray = value.toArray();
 
         memset(gymList, 0, sizeof(gymList));
         int gymNum = valueArray.size();
+
         for (int i = 0; i < gymNum; ++i) {
             // 通过 QJsonArray::at(i)函数获取数组下的第i个元素
             QJsonValue gymArray = valueArray.at(i);
@@ -242,6 +241,7 @@ void campus::processGym(QNetworkReply* reply) {
 
 }
 
+// 查询空闲教室
 void campus::on_pushButton_classroom_clicked()
 {
     QNetworkRequest request;
@@ -252,6 +252,7 @@ void campus::on_pushButton_classroom_clicked()
     //请求完成,获取数据并在槽函数中进行处理
 }
 
+// 教学楼
 struct Building {
     int classroomFree, classroomSum;
     Building() {}
@@ -262,15 +263,13 @@ void campus::processClassroom(QNetworkReply* reply) {
     // 获取http状态码
     QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
     if(statusCode.isValid())
-        qDebug() << "status code=" << statusCode.toInt();
+        qDebug() << "processClassroom, status code=" << statusCode.toInt();
 
     if(reply->error()==QNetworkReply::NoError) {
         QByteArray resBytes = reply->readAll();
 
         QJsonDocument doc = QJsonDocument::fromJson(resBytes);
         QJsonObject json = doc.object();
-        qDebug() << "content=" << json;
-        qDebug() << "";
 
         QJsonValue value = json.value("rows");
         QJsonArray valueArray = value.toArray();
@@ -282,14 +281,12 @@ void campus::processClassroom(QNetworkReply* reply) {
         for (int i = 0; i < buildingNum; ++i) {
             // 通过 QJsonArray::at(i)函数获取数组下的第i个元素
             QJsonValue buildingArray = valueArray.at(i);
-
             // 通过 QJsonValue::toObject()函数将数组元素转换成Object对象
             QJsonObject building = buildingArray.toObject();
             QString buildingName = building["buildingName"].toString();
             buildingMap[buildingName] = Building(building["classroomFree"].toInt(), building["classroomSum"].toInt());
             items << tr(buildingName.toStdString().c_str());
         }
-
         bool ok;
         // 获取条目
         QString item = QInputDialog::getItem(this, tr("教学楼选择"), tr("请选择一栋教学楼"), items, 0, false, &ok);

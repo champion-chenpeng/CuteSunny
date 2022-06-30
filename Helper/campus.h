@@ -17,7 +17,6 @@ public:
     ~campus();
 
 private slots:
-
     void on_pushButton_canteen_clicked();
 
     void processCanteen(QNetworkReply *reply);

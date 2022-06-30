@@ -32,7 +32,8 @@ comment::~comment()
 
 QString output;
 
-void comment::on_pushButton_clicked()
+// 获取树洞所有评论内容
+void comment::on_pushButton_comment_clicked()
 {
     int pid = ui->lineEdit->text().toInt();
     if (pid == 0) {
@@ -48,7 +49,13 @@ void comment::on_pushButton_clicked()
     connect(m_manager, SIGNAL(finished(QNetworkReply*)), this,SLOT(processHole(QNetworkReply*)));
 }
 
+// 解析该树洞的回复数，关注数和内容
 void comment::processHole(QNetworkReply* reply) {
+    // 获取http状态码
+    QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
+    if(statusCode.isValid())
+        qDebug() << "processHole, status code=" << statusCode.toInt();
+
     if(reply->error()==QNetworkReply::NoError) {
         QByteArray resBytes = reply->readAll();
         QJsonDocument doc = QJsonDocument::fromJson(resBytes);
@@ -70,7 +77,13 @@ void comment::processHole(QNetworkReply* reply) {
     }
 }
 
+// 解析该树洞的所有回复
 void comment::processComment(QNetworkReply* reply) {
+    // 获取http状态码
+    QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
+    if(statusCode.isValid())
+        qDebug() << "processComment, status code=" << statusCode.toInt();
+
     if(reply->error()==QNetworkReply::NoError) {
         QByteArray resBytes = reply->readAll();
         QJsonDocument doc = QJsonDocument::fromJson(resBytes);
@@ -78,7 +91,7 @@ void comment::processComment(QNetworkReply* reply) {
         QJsonValue value = json.value("data");
         QJsonArray valueArray = value.toArray();
 
-        std::map<int, QString> commentMap;
+        std::map<int, QString> commentMap;       // 按时间升序排序，map的first元素为评论的cid
 
         int num = valueArray.size();
         for (int i = 0; i < num; ++i) {
@@ -96,5 +109,4 @@ void comment::processComment(QNetworkReply* reply) {
         ui->textBrowser->setText(output);
     }
 }
-
 

@@ -19,7 +19,7 @@
 background: rgb(255, 218, 184);
 }</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="pushButton_bbs">
    <property name="geometry">
     <rect>
      <x>20</x>

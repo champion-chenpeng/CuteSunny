@@ -17,9 +17,10 @@ public:
     ~bbs();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_pushButton_bbs_clicked();
 
     void processBBS(QNetworkReply *reply);
+
     void bbs_mail();
 
 private:

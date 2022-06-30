@@ -71,7 +71,7 @@ background: rgb(255, 255, 255);
 }</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="pushButton_comment">
    <property name="geometry">
     <rect>
      <x>230</x>
