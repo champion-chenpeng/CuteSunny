@@ -48,6 +48,12 @@ background: rgb(168, 255, 247);
      <height>21</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit
+{
+background: rgb(255, 255, 255)
+}</string>
+   </property>
   </widget>
   <widget class="QTextBrowser" name="textBrowser">
    <property name="geometry">
@@ -58,6 +64,12 @@ background: rgb(168, 255, 247);
      <height>341</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QTextBrowser
+{
+background: rgb(255, 255, 255);
+}</string>
+   </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
@@ -67,6 +79,12 @@ background: rgb(168, 255, 247);
      <width>100</width>
      <height>32</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+background: white;
+}</string>
    </property>
    <property name="text">
     <string>获取评论</string>

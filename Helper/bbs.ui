@@ -28,6 +28,12 @@ background: rgb(255, 218, 184);
      <height>32</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+background: white;
+}</string>
+   </property>
    <property name="text">
     <string>全站热点</string>
    </property>
@@ -41,6 +47,12 @@ background: rgb(255, 218, 184);
      <height>341</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QTextBrowser
+{
+background: rgb(255, 255, 255);
+}</string>
+   </property>
   </widget>
   <widget class="QPushButton" name="emailBtn">
    <property name="geometry">
@@ -50,6 +62,12 @@ background: rgb(255, 218, 184);
      <width>100</width>
      <height>32</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+background: white;
+}</string>
    </property>
    <property name="text">
     <string>发送邮件</string>
