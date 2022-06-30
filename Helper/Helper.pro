@@ -13,21 +13,26 @@ SOURCES += \
     bbs.cpp \
     campus.cpp \
     comment.cpp \
+    mainwindow.cpp \
     main.cpp \
     mywidget.cpp \
-    treehole.cpp
+    treehole.cpp \
+    smtp.cpp
 
 HEADERS += \
     bbs.h \
     campus.h \
     comment.h \
+    mainwindow.h \
     mywidget.h \
-    treehole.h
+    treehole.h \
+    smtp.h
 
 FORMS += \
     bbs.ui \
     campus.ui \
     comment.ui \
+    mainwindow.ui \
     mywidget.ui \
     treehole.ui
 

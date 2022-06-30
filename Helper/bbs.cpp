@@ -1,5 +1,7 @@
 #include "bbs.h"
 #include "ui_bbs.h"
+#include "mainwindow.h"
+
 #include <QDebug>
 #include <QColorDialog>
 #include <QFileDialog>
@@ -27,6 +29,7 @@ bbs::bbs(QWidget *parent) :
     ui(new Ui::bbs)
 {
     ui->setupUi(this);
+    connect(ui->emailBtn,SIGNAL(clicked()),this, SLOT(bbs_mail()));
 }
 
 bbs::~bbs()
@@ -101,3 +104,8 @@ void bbs::processBBS(QNetworkReply* reply) {
     }
 }
 
+void bbs::bbs_mail()
+{
+    MainWindow * w = new MainWindow(0,"bbs news",ui->textBrowser->toPlainText());
+    w->show();
+}

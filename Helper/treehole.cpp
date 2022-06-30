@@ -1,5 +1,7 @@
 #include "treehole.h"
 #include "ui_treehole.h"
+#include "mainwindow.h"
+
 #include <QByteArray>
 #include <QDesktopServices>
 #include <QUrl>
@@ -20,6 +22,7 @@ treehole::treehole(QWidget *parent) :
     ui(new Ui::treehole)
 {
     ui->setupUi(this);
+    connect(ui->emailBtn,SIGNAL(clicked()),this, SLOT(treehole_mail()));
 }
 
 treehole::~treehole()
@@ -90,6 +93,12 @@ void treehole::processSearch(QNetworkReply* reply) {
         }
         ui->textBrowser->setText(output);
     }
+}
+
+void treehole::treehole_mail()
+{
+    MainWindow * w = new MainWindow(0,"treehole:"+ui->lineEdit_searchWord->text(),ui->textBrowser->toPlainText());
+    w->show();
 }
 
 // 获取所有关注洞按钮

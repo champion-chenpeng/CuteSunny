@@ -20,6 +20,7 @@ private slots:
     void on_pushButton_clicked();
 
     void processBBS(QNetworkReply *reply);
+    void bbs_mail();
 
 private:
     Ui::bbs *ui;

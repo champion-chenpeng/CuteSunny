@@ -35,6 +35,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void treehole_mail();
+
 private:
     Ui::treehole *ui;
 };
