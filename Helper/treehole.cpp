@@ -54,6 +54,7 @@ struct Hole {
 // 保存User Token
 void treehole::on_pushButton_token_clicked()
 {
+    ui->lineEdit_token->setEchoMode(QLineEdit::Password);
     userToken = ui->lineEdit_token->text();
 }
 
