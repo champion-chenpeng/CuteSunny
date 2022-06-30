@@ -1,4 +1,4 @@
-# PKU Anti-Covid Helper
+# UKP Helper
 GW CPP QT Project
 ## Goal
 帮助北大同学理解防疫政策并完成封校政策下的各项防疫任务，保障课业及其他校园生活的便利
