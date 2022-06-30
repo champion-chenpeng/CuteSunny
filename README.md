@@ -47,3 +47,185 @@ GW CPP QT Project
 
 向使用pku邮箱的好友发送BBS全站的100条热点内容，同样输入邮箱便可一键发送。
 
+## 模块和类设计
+
+### （一）mywidget.h
+
+**描述：**
+
+定义了应用程序的主界面窗口
+
+**继承：**
+
+继承自抽象类QWidget
+
+**成员函数列表：**
+
+* on_pushButton_treehole_clicked：打开树洞功能的窗口
+
+* on_pushButton_bbs_clicked：打开BBS功能的窗口
+* on_pushButton_campus_clicked：打开校园指数查询功能的窗口
+* on_pushButton_portal_clicked：跳转至北京大学门户网
+* on_pushButton_course_clicked：跳转至北京大学教学网
+
+**构造函数：**
+
+```C++
+MyWidget(QWidget *parent = 0);
+```
+
+
+
+### （二）treehold.h
+
+**描述：**
+
+定义了实现树洞功能的窗口
+
+**继承：**
+
+继承自抽象类QWidget
+
+**成员函数列表：**
+
+* on_pushButton_token_clicked()：保存用户输入的树洞User Token
+
+* on_pushButton_search_clicked()：根据关键词向网页提交get请求，搜索树洞相关内容
+* processSearch(QNetworkReply* reply)：处理搜索树洞返回的json内容，并显示在窗口上
+* on_pushButton_attention_clicked()：向网页提交get请求，获得所有树洞关注列表
+* processAttention(QNetworkReply* reply)：处理获取树洞关注返回的json内容，并显示在窗口上
+* on_pushButton_gpa_clicked()：向网页提交get请求，获得所有课程成绩和综合GPA
+* processGPA(QNetworkReply* reply)：处理获取课程成绩返回的json内容，并显示在窗口上
+* on_pushButton_comment_clicked()：创建一个comment对象，并打开查询树洞回复的窗口
+* treehole_mail()：创建一个MainWindow对象，并打开发送邮件的窗口
+
+**构造函数：**
+
+```c++
+treehole(QWidget *parent = nullptr);
+```
+
+
+
+### （三）comment.h
+
+**描述：**
+
+定义了根据洞号获取树洞所有回复的窗口
+
+**继承：**
+
+继承自抽象类QWidget
+
+**成员函数列表：**
+
+* on_pushButton_comment_clicked()：向网页提交get请求，获得该树洞的基本信息
+
+* processHole(QNetworkReply* reply)：处理上一步返回内容，并提交获取评论的get请求
+* processComment(QNetworkReply* reply)：处理返回的json数据，显示树洞的所有回复
+
+**构造函数：**
+
+```c++
+comment(QWidget *parent = nullptr);
+```
+
+
+
+### （四）bbs.h
+
+**描述：**
+
+定义了实现BBS功能的窗口
+
+**继承：**
+
+继承自抽象类QWidget
+
+**成员函数列表：**
+
+* on_pushButton_bbs_clicked()：向BBS网站提交get请求，获取全站热点版面的内容
+
+* processBBS(QNetworkReply *reply)：用正则表达式解析返回的html数据，并显示在窗口上
+* bbs_mail()：创建一个MainWindow对象，并打开发送邮件的窗口
+
+**构造函数：**
+
+```C++
+bbs(QWidget *parent = nullptr);
+```
+
+
+
+### （五）campus.h
+
+**描述：**
+
+定义了根据条件查询校园指数的窗口
+
+**继承：**
+
+继承自抽象类QWidget
+
+**成员函数列表：**
+
+* on_pushButton_canteen_clicked()：向北大门户网站提交get请求，获取就餐指数
+
+* processCanteen(QNetworkReply *reply)：处理返回的json，以一定方式排序显示
+* on_pushButton_gym_clicked()：向北大门户网站提交get请求，获取健身指数
+* processGym(QNetworkReply *reply)：处理返回的json，根据条件显示数据
+* on_pushButton_classroom_clicked()：向北大门户网站提交get请求，获取空闲教室
+* processClassroom(QNetworkReply *reply)：处理返回的json，根据条件显示数据
+
+**构造函数：**
+
+```c++
+campus(QWidget *parent = nullptr);
+```
+
+
+
+### （六）mainwindow.h
+
+**描述：**
+
+定义了发送邮件的窗口
+
+**继承：**
+
+继承自抽象类QMainWindow
+
+**成员函数列表：**
+
+* sendMail：发送邮件
+
+* MailSent：检查邮件状态并提示
+
+**构造函数：**传入邮件主题、邮件正文。
+
+```c++
+MainWindow(QWidget *parent = 0,QString subject="Subject",QString mailbody="MailBody");
+```
+
+
+
+### （七）smtp.h
+
+**描述：**
+
+定义了具有发送邮件功能的smtp代理
+
+**继承：**
+
+继承自抽象类QObject
+
+**成员函数列表：**
+
+* sendMail，发送邮件
+
+**构造函数：**传入用户名、密码、主服务器等
+
+```c++
+Smtp(const QString &user, const QString &pass, const QString &host, int port = 465, int timeout = 30000);
+```
+
